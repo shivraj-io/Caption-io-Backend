@@ -27,7 +27,7 @@ async function generateCaption(imageBase64) {
     const prompt = `Generate exactly 3 creative and engaging captions for this image.
 Make them suitable for social media. Keep each caption concise but impactful.
 Include relevant emojis where appropriate.
-Avoid generic phrases.with trending hashtags.
+Avoid generic phrases .with trending hashtags.
 Do not number or label the captions. Separate each caption with a line break.
 `;
 
@@ -53,14 +53,14 @@ Do not number or label the captions. Separate each caption with a line break.
       config: {
         temperature: 0.7,
         topP: 0.95,
-        maxOutputTokens: 200
+        maxOutputTokens: 300
       }
     });
 
     const caption = response.text;
 
     console.log('✓ Caption generated successfully');
-    console.log('  Preview:', caption.substring(0, 50) + '...');
+    console.log('  Preview:', caption.substring(0, 100) + '...');
     
     return caption;
 

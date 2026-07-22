@@ -24,32 +24,21 @@ async function generateCaption(imageBase64) {
       apiKey: process.env.GEMINI_API_KEY
     });
 
-    const prompt = `You are a professional social media caption writer analyzing an uploaded image.
+    const prompt = `Generate exactly 3 creative and engaging captions for this image.
 
-Generate exactly 3 unique captions based on what you actually see in the image (subject, mood, setting, colors, action, expression, etc.).
+Rules for every caption, no exceptions:
+- Length: 1-2 short lines (about 6-12 words)
+- Include exactly 1-2 emojis placed naturally within the sentence (never omit)
+- End with 3-5 relevant, trending hashtags starting with # (never omit)
+- Avoid generic phrases like "beautiful day" or "living my best life"
+- Each caption should have a distinct tone: one witty, one aesthetic, one bold/confident
 
-Rules for each caption:
-- Length: SHORT — 1 to 2 lines only (roughly 5–12 words), like a real Instagram/X caption
-- Tone: creative, witty, or emotionally engaging — never bland or generic
-- Include 1–2 relevant emojis placed naturally within the line, not just at the end
-- End each caption with 3–5 trending, niche-relevant hashtags (not just #photooftheday #instagood — pick hashtags that match the actual subject/theme of the image)
-- Each of the 3 captions must have a DIFFERENT tone: one witty/funny, one aesthetic/poetic, one bold/confident or relatable
-- Do NOT write long, descriptive sentences — keep it punchy and scroll-stopping
-
-Output format:
-- Do NOT number or label the captions
-- Do NOT add intros like "Here are your captions"
+Output rules:
+- Do not number or label the captions
 - Separate each caption with a blank line
-- Output ONLY the 3 captions, nothing else
+- Output only the 3 captions, nothing else — no intro, no explanation
 
-Example structure (for reference only, don't reuse this content):
-Chasing golden hour ✨ #GoldenHourVibes #SunsetChaser #MoodyAesthetic
-
-Some days the light finds you 🌅 #SlowMornings #LightAndSoul #QuietMoments
-
-Confidence looks good on me 😎 #MainCharacterEnergy #OwnTheFrame #Unbothered
-
-IMPORTANT: Every single caption MUST end with 3–5 hashtags starting with #. A caption without hashtags is invalid — never return one without hashtags. Keep every caption to 1-2 short lines — never long or descriptive.`;
+A caption missing an emoji or missing hashtags is invalid and must be corrected before output.`;
 
 
     console.log('⏳ Sending image to Gemini AI...');

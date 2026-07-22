@@ -25,20 +25,11 @@ async function generateCaption(imageBase64) {
     });
 
     const prompt = `Generate exactly 3 creative and engaging captions for this image.
-
-Rules for every caption, no exceptions:
-- Length: 1-2 short lines (about 6-12 words)
-- Include exactly 1-2 emojis placed naturally within the sentence (never omit)
-- End with 3-5 relevant, trending hashtags starting with # (never omit)
-- Avoid generic phrases like "beautiful day" or "living my best life"
-- Each caption should have a distinct tone: one witty, one aesthetic, one bold/confident
-
-Output rules:
-- Do not number or label the captions
-- Separate each caption with a blank line
-- Output only the 3 captions, nothing else — no intro, no explanation
-
-A caption missing an emoji or missing hashtags is invalid and must be corrected before output.`;
+Make them suitable for social media. Keep each caption concise but impactful.
+Include relevant emojis where appropriate.
+Avoid generic phrases.with trending hashtags.
+Do not number or label the captions. Separate each caption with a line break.
+`;
 
 
     console.log('⏳ Sending image to Gemini AI...');
@@ -60,16 +51,16 @@ A caption missing an emoji or missing hashtags is invalid and must be corrected 
         }
       ],
       config: {
-        temperature: 0.9,
+        temperature: 0.7,
         topP: 0.95,
-        maxOutputTokens: 600
+        maxOutputTokens: 200
       }
     });
 
     const caption = response.text;
 
     console.log('✓ Caption generated successfully');
-    console.log('  Preview:', caption.substring(0, 100) + '...');
+    console.log('  Preview:', caption.substring(0, 50) + '...');
     
     return caption;
 

@@ -46,7 +46,9 @@ Chasing golden hour like it owes me money ✨ #GoldenHourVibes #SunsetChaser #Mo
 
 Some days you find the light, some days the light finds you 🌅 #SlowMornings #LightAndSoul #QuietMoments
 
-Confidence looks good on you, and so does this shot 😎 #MainCharacterEnergy #OwnTheFrame #Unbothered`;
+Confidence looks good on you, and so does this shot 😎 #MainCharacterEnergy #OwnTheFrame #Unbothered
+
+IMPORTANT: Every single caption MUST end with 3–5 hashtags starting with #. A caption without hashtags is invalid — never return one without hashtags. Never return a caption shorter than 12 words.`;
 
 
     console.log('⏳ Sending image to Gemini AI...');
@@ -68,9 +70,9 @@ Confidence looks good on you, and so does this shot 😎 #MainCharacterEnergy #O
         }
       ],
       config: {
-        temperature: 0.7,
+        temperature: 0.9,
         topP: 0.95,
-        maxOutputTokens: 400
+        maxOutputTokens: 500
       }
     });
 

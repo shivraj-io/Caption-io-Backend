@@ -77,7 +77,7 @@ Confidence looks good on you, and so does this shot 😎 #MainCharacterEnergy #O
     const caption = response.text;
 
     console.log('✓ Caption generated successfully');
-    console.log('  Preview:', caption.substring(0, 50) + '...');
+    console.log('  Preview:', caption.substring(0, 100) + '...');
     
     return caption;
 

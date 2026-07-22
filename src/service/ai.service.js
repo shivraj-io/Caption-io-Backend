@@ -24,12 +24,29 @@ async function generateCaption(imageBase64) {
       apiKey: process.env.GEMINI_API_KEY
     });
 
-    const prompt = `Generate exactly 3 creative and engaging captions for this image.
-Make them suitable for social media. Keep each caption concise but impactful.
-Include relevant emojis where appropriate.
-Avoid generic phrases.with trending hashtags.
-Do not number or label the captions. Separate each caption with a line break.
-`;
+    const prompt = `You are a professional social media caption writer analyzing an uploaded image.
+
+Generate exactly 3 unique captions based on what you actually see in the image (subject, mood, setting, colors, action, expression, etc.).
+
+Rules for each caption:
+- Length: 12–25 words (never just 2–3 words)
+- Tone: creative, witty, or emotionally engaging — never bland or generic
+- Include 1–2 relevant emojis placed naturally, not just at the end
+- End each caption with 3–5 trending, niche-relevant hashtags (not just #photooftheday #instagood — pick hashtags that match the actual subject/theme of the image)
+- Each of the 3 captions must have a DIFFERENT tone: one witty/funny, one aesthetic/poetic, one bold/confident or relatable
+
+Output format:
+- Do NOT number or label the captions
+- Do NOT add intros like "Here are your captions"
+- Separate each caption with a blank line
+- Output ONLY the 3 captions, nothing else
+
+Example structure (for reference only, don't reuse this content):
+Chasing golden hour like it owes me money ✨ #GoldenHourVibes #SunsetChaser #MoodyAesthetic
+
+Some days you find the light, some days the light finds you 🌅 #SlowMornings #LightAndSoul #QuietMoments
+
+Confidence looks good on you, and so does this shot 😎 #MainCharacterEnergy #OwnTheFrame #Unbothered`;
 
 
     console.log('⏳ Sending image to Gemini AI...');

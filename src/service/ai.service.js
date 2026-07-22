@@ -70,7 +70,7 @@ Confidence looks good on you, and so does this shot 😎 #MainCharacterEnergy #O
       config: {
         temperature: 0.7,
         topP: 0.95,
-        maxOutputTokens: 200
+        maxOutputTokens: 400
       }
     });
 

@@ -29,11 +29,12 @@ async function generateCaption(imageBase64) {
 Generate exactly 3 unique captions based on what you actually see in the image (subject, mood, setting, colors, action, expression, etc.).
 
 Rules for each caption:
-- Length: 12–25 words (never just 2–3 words)
+- Length: SHORT — 1 to 2 lines only (roughly 5–12 words), like a real Instagram/X caption
 - Tone: creative, witty, or emotionally engaging — never bland or generic
-- Include 1–2 relevant emojis placed naturally, not just at the end
+- Include 1–2 relevant emojis placed naturally within the line, not just at the end
 - End each caption with 3–5 trending, niche-relevant hashtags (not just #photooftheday #instagood — pick hashtags that match the actual subject/theme of the image)
 - Each of the 3 captions must have a DIFFERENT tone: one witty/funny, one aesthetic/poetic, one bold/confident or relatable
+- Do NOT write long, descriptive sentences — keep it punchy and scroll-stopping
 
 Output format:
 - Do NOT number or label the captions
@@ -42,13 +43,13 @@ Output format:
 - Output ONLY the 3 captions, nothing else
 
 Example structure (for reference only, don't reuse this content):
-Chasing golden hour like it owes me money ✨ #GoldenHourVibes #SunsetChaser #MoodyAesthetic
+Chasing golden hour ✨ #GoldenHourVibes #SunsetChaser #MoodyAesthetic
 
-Some days you find the light, some days the light finds you 🌅 #SlowMornings #LightAndSoul #QuietMoments
+Some days the light finds you 🌅 #SlowMornings #LightAndSoul #QuietMoments
 
-Confidence looks good on you, and so does this shot 😎 #MainCharacterEnergy #OwnTheFrame #Unbothered
+Confidence looks good on me 😎 #MainCharacterEnergy #OwnTheFrame #Unbothered
 
-IMPORTANT: Every single caption MUST end with 3–5 hashtags starting with #. A caption without hashtags is invalid — never return one without hashtags. Never return a caption shorter than 12 words.`;
+IMPORTANT: Every single caption MUST end with 3–5 hashtags starting with #. A caption without hashtags is invalid — never return one without hashtags. Keep every caption to 1-2 short lines — never long or descriptive.`;
 
 
     console.log('⏳ Sending image to Gemini AI...');
@@ -72,7 +73,7 @@ IMPORTANT: Every single caption MUST end with 3–5 hashtags starting with #. A 
       config: {
         temperature: 0.9,
         topP: 0.95,
-        maxOutputTokens: 500
+        maxOutputTokens: 300
       }
     });
 

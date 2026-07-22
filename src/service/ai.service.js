@@ -62,7 +62,7 @@ A caption missing an emoji or missing hashtags is invalid and must be corrected 
       config: {
         temperature: 0.9,
         topP: 0.95,
-        maxOutputTokens: 300
+        maxOutputTokens: 600
       }
     });
 

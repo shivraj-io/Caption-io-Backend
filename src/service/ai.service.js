@@ -35,7 +35,7 @@ Do not number or label the captions. Separate each caption with a line break.
     console.log('⏳ Sending image to Gemini AI...');
     
     const response = await ai.models.generateContent({
-      model: "gemini-3.6-flash",
+      model: "gemini-2.5-flash",
       contents: [
         {
           role: "user",

@@ -11,7 +11,7 @@ const allowedOrigins = [
   'http://localhost:5174',
   'http://localhost:3000',
   'http://127.0.0.1:5173',
-  'https://caption-io.vercel.app'
+  process.env.FRONTEND_URL
 ].filter(Boolean);
 
 const corsOptions = {
@@ -42,12 +42,32 @@ const corsOptions = {
     }
   },
   credentials: true,
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.options('*', cors(corsOptions));
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+
+  if (origin) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Credentials', 'true');
+  }
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
+
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Health check route
 app.get('/', (req, res) => {
